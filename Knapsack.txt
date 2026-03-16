@@ -1,0 +1,87 @@
+package lab7;
+
+import java.util.Scanner;
+
+
+class Knapsack{
+	int n;
+	double c;
+	double p[];
+	double w[];
+
+	public Knapsack(int n2, double c2, double[] p2, double[] w2) {
+		// TODO Auto-generated constructor stub
+
+
+		this.n=n2;
+		this.c=c2;
+		this.p=p2;
+		this.w=w2;
+	}
+	public void compute()
+	{
+		int i;
+		double[]x=new double[n+1];
+		for(i=0;i<n;i++)
+		{
+			x[i]=0.0;
+		}
+		double rc=c;
+		for(i=0;i<n;i++)
+		{
+			if(w[i]>rc)
+				break;
+			x[i]=1;
+			rc=rc-w[i];
+		}
+		if(i<=n)
+		{
+			x[i]=rc/w[i];
+		}
+		double netprofit=0.0;
+		for(i=0;i<n;i++)
+		{
+			if(x[i]>0.0)
+			{
+				netprofit=netprofit+x[i]*p[i];
+			}
+		}
+		System.out.println("netprofit:"+netprofit);
+		System.out.println("the object picked up into knap are:");
+		for(i=0;i<n;i++)
+		{
+			System.out.println(+x[i]+"");
+		}}
+}
+public class Kpgreedy {
+	public class kpgreedy
+	{
+		public static void main(String[] args)
+		{
+			int n;
+			double c;
+			Scanner scan=new Scanner(System.in);
+			System.out.println("Enter number of object:");
+			n=scan.nextInt();
+			double[]p=new double[n+1];
+			double[]w=new double[n+1];
+			int i;
+			System.out.println("Enter a capacity");
+			c=scan.nextDouble();
+			System.out.println("Enter profit for each"+n+"objects");
+			for(i=0;i<n;i++)
+				p[i]=scan.nextDouble();
+			System.out.println("Enter weight for each"+n+"objects");
+			for(i=0;i<n;i++)
+				w[i]=scan.nextDouble();
+			Knapsack gk=new Knapsack(n,c,p,w);
+			gk.compute();
+		}
+	}
+}
+
+
+
+
+
+

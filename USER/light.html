@@ -1,0 +1,49 @@
+<html>
+<head>
+<titel>Light ON And OFF</titel>
+<style>
+.light
+{
+width:150px;
+height:150px;
+border-radius:100px;
+margin-bottom:30px;
+border:1px solid#000;
+position:relative;
+top:30px}
+.on1{
+background-color:red;
+}
+.lightbottom
+{
+border:2px solid#000;
+width:80px;
+height:40px;
+border-top:none;
+background-color:gray;
+margin-bottom:30px;
+}
+</style>
+</head>
+<body>
+<center><h1>Light On And Off</h1></center>
+<center>
+<div class="light">
+</div>
+<div class="lightbottom">
+</div>
+<button id="on"Onclick="LightOn()">ON</button>
+<button class="off"Onclick="LightOff()">OFF</button>
+</center>
+</body>
+<script>
+function LightOn()
+{
+document.querySelector('.light').classList.add('on1');
+}
+function LightOff()
+{
+document.querySelector('.light').classList.remove('on1');
+}
+</script>
+</html>

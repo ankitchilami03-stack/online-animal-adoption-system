@@ -1,0 +1,25 @@
+<html>
+<head>
+<script type="application/javascript">
+function init(){
+var canvas=document.getElementById('canvas');
+if(canvas.getContext){
+var ctx=canvas.getContext("2d");
+ctx.textAlign="start";
+ctx.fillStyle="red";
+ctx.font="25px verdana";
+ctx.shadowColor="black";
+ctx.shadowOffsetX=2;
+ctx.shadowOffsetY=2;
+ctx.fillText("Believe shadowdow",10,20);
+ctx.shadowBlur=2;
+ctx.fillText("Believe",10,60);
+}
+}
+</script>
+</head>
+<body onload="init();">
+<canvas id="canvas" height="100" width="300" style="border:2px solid#d3d3d3;">
+</canvas>
+</body>
+</html>

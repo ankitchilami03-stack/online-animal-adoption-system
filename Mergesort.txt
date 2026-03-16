@@ -1,0 +1,76 @@
+package url;
+
+//Online Java Compiler
+//Use this editor to write, compile and run your Java code onli
+//Online Java Compiler
+//Use this editor to write, compile and run your Java code online
+
+import java.io.*;
+import java.util.Scanner;
+
+public class MergeSort2
+{
+	public static void main(String[] args)
+	{
+		int a[]=new int[10];
+		Scanner scan=new Scanner(System.in);
+		System.out.println("Enter the size...:");
+		int n=scan.nextInt();
+		System.out.println("enter array elements:");
+		for(int i=0;i<n;i++)
+			a[i]=scan.nextInt();
+		msortdiv(a,0,n-1);
+		System.out.println("sorted array are:");
+		for(int i=0;i<n;i++)
+			System.out.println(a[i]);
+		long start,end;
+		start=System.nanoTime();
+		end=System.nanoTime();
+		double duration=end-start;
+		System.out.println("\n the time taken to sort is"+duration+"ns");
+
+	}
+	static void msortdiv(int a[],int low,int high)
+	{
+		int mid;
+		if(low<high)
+		{
+			mid=(low+high)/2;
+			msortdiv(a,low,mid);
+			msortdiv(a,mid+1,high);
+			mergesort(a,low,mid,high);
+		}
+	}
+	static void mergesort(int a[],int low,int mid,int high)
+	{
+		int i,j,k,b[]=new int[20];
+		i=low;
+		j=mid+1;
+		k=low;
+		while(i<=mid && j<=high)
+		{
+			if(a[i]>=a[j])
+			{
+				b[k]=a[j];
+				j++;
+				k++;
+			}
+			else
+			{
+				b[k++]=a[i++];	
+			}
+		}
+		while(i<=mid)
+		{
+			b[k++]=a[i++];
+		}
+
+		while(j<=high)
+		{
+			b[k++]=a[j++];
+		}
+		for( i=low;i<=high;i++)
+		{
+			a[i]=b[i];
+		}
+	}
